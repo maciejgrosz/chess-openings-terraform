@@ -11,5 +11,9 @@ resource "helm_release" "argocd" {
         name = "server.service.type"
         value = "LoadBalancer"
     }
+    set {
+      name = "server.service.annotations.external-dns\\.alpha\\.kubernetes\\.io/hostname"
+      value = "argo.maciejgroszyk.click"
+  }
   # values file for argcd where is specified access to app-of-apps
 }
